@@ -2,33 +2,10 @@ import { useHistory } from "react-router-dom";
 
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react'
+import { jsx } from '@emotion/react'
 
-const pokemonDiv = css`
-    min-height: 100px;
-    width: 300px;
-    text-align: center;
-    cursor: pointer;
-    border-style: solid;
-    border-width: 1px;
-    margin: 10px;
-    border-radius: 25px;
+import { pokemonDiv } from "./PokemonEmotion";
 
-    .pokemon-name {
-        font-size: 30px;
-        font-weight: bold;
-        text-transform: capitalize;
-    }
-    .pokemon-own {
-        font-size: 16px;
-    }
-    img {
-        width: 130px;
-    }
-    :hover {
-        background-color: whitesmoke;
-    }
-`
 
 
 const Pokemon = (props) => {

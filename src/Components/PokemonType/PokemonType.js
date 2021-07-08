@@ -1,7 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react'
-import styled from '@emotion/styled'
+import { jsx } from '@emotion/react'
+
+import {Container} from './PokemonTypeEmotion'
 
 let backgroundColor = {
     "normal":"#9baba1",
@@ -33,25 +34,6 @@ function getBackgroundType (typeName) {
     return "#ffffff";
 }
 
-const pokemonTypeCSS = props => css`
-    background-color: ${props.pokemonTypeColor};
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    margin-right: 3px;
-    text-align: center;
-    padding-bottom: 3px;
-    text-transform: capitalize;
-    padding: 0.5px 12px;
-    cursor: context-menu;
-    p {
-        margin: 0;
-    }
-`
-
-const Container = styled.div`
-  ${pokemonTypeCSS};
-`
 
 const PokemonType = (props) => {
     return (

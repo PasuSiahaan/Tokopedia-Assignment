@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 //Navbar
-import Navbar from './Components/Navbar'
+import Navbar from './Components/Navbar/Navbar'
 
 //Page
-import MyPokemonList from './Containers/MyPokemonListPage/MyPokemonList';
-import PokemonDetail from './Containers/PokemonDetailPage/PokemonDetail';
-import PokemonList from './Containers/PokemonListPage/PokemonList';
+import MyPokemonList from './Page/MyPokemonListPage/MyPokemonList';
+import PokemonDetail from './Page/PokemonDetailPage/PokemonDetail';
+import PokemonList from './Page/PokemonListPage/PokemonList';
 
 //import emotion
 /** @jsxRuntime classic */

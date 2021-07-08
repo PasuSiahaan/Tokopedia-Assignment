@@ -1,12 +1,10 @@
-import logo from '../Asset/half-circle.gif'
+import logo from '../../Asset/half-circle.gif'
 
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react'
+import { jsx } from '@emotion/react'
 
-const loadingImage = css`
-    text-align:center ;
-`
+import { loadingImage } from './LoadingEmotion'
 
 const Loading = () => {
     return (

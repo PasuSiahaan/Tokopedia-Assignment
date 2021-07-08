@@ -1,10 +1,10 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react'
+import { jsx } from '@emotion/react'
 
-const errorText = css`
-    text-align: center;
-`
+//css 
+import { errorText } from './ErrorEmotion'; 
+
 
 const Error = (error) => {
     return (
