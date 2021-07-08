@@ -8,11 +8,12 @@ import { jsx } from '@emotion/react'
 
 const PokemonCatchPopUp = () => {
     function cobaClick() {
-        let data = {
-            pokemonName:"ivysaur",
-            ownPokemonName:"ivysaur222",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
-        }
+        // let data = {
+        //     pokemonName:"ivysaur",
+        //     ownPokemonName:"ivysaur222",
+        //     imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+        // }
+        console.log("")
     }
 
     return (
