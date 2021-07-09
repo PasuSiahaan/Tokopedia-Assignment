@@ -12,16 +12,15 @@ const Pokemon = (props) => {
     let history = useHistory();
     let pokemonOwn = getPokemonOwn();
 
-    function getPokemonOwn(){
-        
-        return 0
-    }
-
-    function getPokemonDetail (pokemonName) {
-        history.push(`/pokemon-detail/${pokemonName}`)
+    function getPokemonOwn() {
+        let a = props.pokemonCountList[props.pokemonName]
+        if(a === undefined){
+            a=0
+        }
+        return a
     }
     return (
-        <div css={pokemonDiv} onClick={() => getPokemonDetail(props.pokemonName)}>
+        <div css={pokemonDiv} onClick={() => history.push(`/pokemon-detail/${props.pokemonName}`)}>
             <p className="pokemon-name">{props.pokemonName}</p>
             <img src={props.pokemonImage} alt={props.pokemonName}/>
             <p className="pokemon-own">Own: {pokemonOwn}</p>

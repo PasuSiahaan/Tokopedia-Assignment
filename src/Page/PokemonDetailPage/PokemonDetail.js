@@ -6,7 +6,7 @@ import Loading from "../../Components/Loading/Loading";
 import Error from '../../Components/Error/Error';
 import PokemonType from "../../Components/PokemonType/PokemonType";
 import PokemonCatchPopUp from "../../Components/PokemonCatchPopUp/PokemonCatchPopUp";
-
+import PokemonMove from "../../Components/PokemonMove/PokemonMove";
 
 
 //import emotion
@@ -16,7 +16,7 @@ import { jsx } from '@emotion/react'
 import { Fragment } from "react";
 
 //emotion css
-import { titleCSS,heightAndWeightCSS,pokemonDetailDivCSS,typeTitleCSS } from "./PokemonDetailEmotion";
+import { titleCSS,heightAndWeightCSS,pokemonDetailDivCSS,typeTitleCSS,moveListCSS } from "./PokemonDetailEmotion";
 
 
 const GET_POKEMON_DETAIL = gql`
@@ -49,15 +49,18 @@ const PokemonDetail = () =>{
         variables: {"name": pokemonName},
       });
     if(loading){
+        window.scrollTo(0, 0);
         return(<Loading />) 
     }
     if(data.pokemon.id === null){
+        window.scrollTo(0, 0);
         return(<Error error={`There isn't pokemon with name "${pokemonName}"`}/>)
     }
     if(error){
+        window.scrollTo(0, 0);
         return(<Error error={error.message}/>)
     }
-
+    
     return (
         <Fragment>
             <h1 css={titleCSS}>{data.pokemon.name}</h1>
@@ -83,18 +86,16 @@ const PokemonDetail = () =>{
                         </div>
                     </div>
                 </div>
-                <div>
-                <div>
-                    <h3 css={typeTitleCSS}>Move</h3>
-                        <div className="pokemon-type-list">
-                            {data.pokemon.types.map( res => (
-                                <PokemonType key={res.type.name} type={res.type.name}></PokemonType>
-                            ))}
-                        </div>
-                    </div>
+            </div>
+            <div css={moveListCSS}>
+                <h3 css={typeTitleCSS}>Move</h3>
+                <div className="pokemon-move-list">
+                    {data.pokemon.moves.map( res => (
+                        <PokemonMove key={res.move.name} move={res.move.name}></PokemonMove>
+                    ))}
                 </div>
             </div>
-            <PokemonCatchPopUp />
+            <PokemonCatchPopUp name={data.pokemon.name} imageUrl={data.pokemon.sprites.front_default}/>
         </Fragment>
     )
 }

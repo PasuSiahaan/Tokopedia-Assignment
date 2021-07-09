@@ -19,7 +19,7 @@ export const pokemonDetailDivCSS = css`
 `
 export const heightAndWeightCSS = css`
     text-align: left;
-    margin-top: 1rem;
+    margin: 1rem 0;
     span {
         font-weight: bold;
     }
@@ -28,4 +28,21 @@ export const heightAndWeightCSS = css`
 export const typeTitleCSS = css`
     margin-top: 0px;
     margin-bottom: 1rem;
+`
+
+export const moveListCSS = css`
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .pokemon-move-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 300px;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        padding: 10px;
+        justify-content: space-evenly;
+    }
 `
