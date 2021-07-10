@@ -8,12 +8,14 @@ import Navbar from './Components/Navbar/Navbar'
 import MyPokemonList from './Page/MyPokemonListPage/MyPokemonList';
 import PokemonDetail from './Page/PokemonDetailPage/PokemonDetail';
 import PokemonList from './Page/PokemonListPage/PokemonList';
+import NotFound from './Page/NotFound/NotFound';
 
 //import emotion
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
 import { useEffect } from 'react';
+import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 //css
 const pageCSS = css`
@@ -62,9 +64,12 @@ function App() {
         <div>
           <Navbar />   
           <div css={pageCSS}>
-            <Route exact path='/' component={PokemonList} /> 
-            <Route exact path='/my-pokemon-list' component={MyPokemonList} /> 
-            <Route exact path='/pokemon-detail/:pokemonName' component={PokemonDetail} /> 
+            <Switch>
+              <Route exact path='/' component={PokemonList} /> 
+              <Route exact path='/my-pokemon-list' component={MyPokemonList} /> 
+              <Route exact path='/pokemon-detail/:pokemonName' component={PokemonDetail} /> 
+              <Route component={NotFound} />
+            </Switch>
           </div>
         </div>
       </Router>
