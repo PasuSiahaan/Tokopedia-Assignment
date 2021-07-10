@@ -23,4 +23,35 @@ export const myPokemonDiv = css`
     span {
         font-weight: bold;
     }
+    button {
+        margin-bottom: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: red;
+        color: white;
+        padding: 10px;
+    }
+`
+
+export const deleteConfirmPopUp = css`
+    text-align: center;
+    .yes-no-button {
+        display: flex;
+        justify-content: space-around;
+        button {
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .yes-button {
+            background-color: green;
+            color: white;
+        }
+        .no-button {
+            background-color: red;
+            color: white;
+        }
+    }
 `

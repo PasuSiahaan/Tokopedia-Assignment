@@ -22,6 +22,6 @@ export const pokemonDiv = css`
         width: 130px;
     }
     :hover {
-        background-color: whitesmoke;
+        background-color: #D3E0EA;
     }
 `

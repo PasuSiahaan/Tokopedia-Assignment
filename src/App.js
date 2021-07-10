@@ -13,11 +13,13 @@ import PokemonList from './Page/PokemonListPage/PokemonList';
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
+import { useEffect } from 'react';
 
 //css
 const pageCSS = css`
   margin-top: 100px;
 `
+
 
 
 const cache = new InMemoryCache({
@@ -51,6 +53,9 @@ const client = new ApolloClient({
 });
 
 function App() {
+  useEffect( ()=> {
+    document.body.style.backgroundColor = "#F6F5F5"
+  }, [])
   return (
     <ApolloProvider client={client}>
       <Router>

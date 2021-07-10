@@ -15,6 +15,14 @@ export const pokemonDetailDivCSS = css`
     .pokemon-type-list {
         display: flex;
 
+    }   
+    @media (min-width: 600px) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        .pokemon-type-list{
+            width: 300px;
+        }
     }
 `
 export const heightAndWeightCSS = css`
@@ -28,6 +36,9 @@ export const heightAndWeightCSS = css`
 export const typeTitleCSS = css`
     margin-top: 0px;
     margin-bottom: 1rem;
+    @media (min-width: 600px) {
+        text-align: left;
+    }
 `
 
 export const moveListCSS = css`
@@ -43,6 +54,12 @@ export const moveListCSS = css`
         border-width: 1px;
         border-radius: 4px;
         padding: 10px;
-        justify-content: space-evenly;
+        justify-content: space-around;
+    }
+    @media (min-width:375px) {
+        .pokemon-move-list {
+            width: 80%;
+            max-width: 600px;
+        }
     }
 `

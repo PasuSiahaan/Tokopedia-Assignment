@@ -13,15 +13,21 @@ import { titleCSS } from '../PokemonListPage/PokemonListEmotion';
 
 const MyPokemonList = () =>{
   const [myPokemonObject,setMyPokemonObject] = useState({})
+  const [isMyPokemonNull,setIsMyPokemonNull] = useState(false)
   useEffect(() => {
     window.scrollTo(0, 0);
     let isMounted = true
     firebaseDB.child('pokemon').on('value',snapshot => {
-      if(snapshot.val()!=null){
-        if(isMounted){
+      if(isMounted){
+        if(snapshot.val()!=null){
           setMyPokemonObject({
             ...snapshot.val()
           })
+          setIsMyPokemonNull(false)
+        }
+        else{
+          setMyPokemonObject({})
+          setIsMyPokemonNull(true)
         }
       }
     })
@@ -30,11 +36,17 @@ const MyPokemonList = () =>{
   return (
       <Fragment>
         <h1 css={titleCSS}>My Pokemon List</h1>
-        <div css={pokemonListCSS}>
+        {isMyPokemonNull ? 
+          <div>
+            <h3 css={titleCSS}>You don't have any pokemon now</h3>
+          </div>:
+          <div css={pokemonListCSS}>
             {Object.keys(myPokemonObject).map(id=>(
-                <MyPokemon key={id} pokemonName={myPokemonObject[id].pokemonName} imageUrl={myPokemonObject[id].imageUrl}  myPokemonName={myPokemonObject[id].myPokemonName}/>
+                <MyPokemon key={id} id={id} pokemonName={myPokemonObject[id].pokemonName} imageUrl={myPokemonObject[id].imageUrl}  myPokemonName={myPokemonObject[id].myPokemonName}/>
             ))}
-        </div>
+          </div>
+        }
+        
       </Fragment>
   )
 }

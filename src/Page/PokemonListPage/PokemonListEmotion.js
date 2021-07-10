@@ -17,16 +17,14 @@ export const loadMoreCSS = css`
         margin: 20px 0px;
         cursor: pointer;
         padding: 10px 20px;
-        font-size: 24px;
+        font-size: large;
         text-decoration: none;
         border: none;
         border-radius: 10px;
-        background-color: #3BF437;
+        background-color: #276678;
+        color: white;
     }
     button:hover {
-        background-color: #2EC32B;
-    }
-    button:active {
-        background-color: #2EC32B;
+        background-color: #317c92;
     }
 `

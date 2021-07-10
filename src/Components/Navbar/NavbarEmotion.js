@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 export const navbarButtonCSS = css`
     :hover {
-        background-color: #2e4bd6;
+        background-color: #317c92;
     }
 `
 export const navbarCSS = css`
@@ -13,7 +13,7 @@ export const navbarCSS = css`
     padding-left: 10px;
     z-index: 1;
     top: 0;
-    background-color: #1F3BBF;
+    background-color: #276678;
     position: fixed;
     width: 100%;
     a {
@@ -21,7 +21,7 @@ export const navbarCSS = css`
         padding: 0.25rem 1rem;
         margin: 0;
         text-decoration: none;
-        font-size: larger;
+        font-size: large;
     }
 
 `

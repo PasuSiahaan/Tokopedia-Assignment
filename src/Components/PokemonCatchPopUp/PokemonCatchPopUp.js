@@ -6,8 +6,9 @@ import Modal from 'react-awesome-modal';
 import { jsx } from '@emotion/react'
 
 // emotion css
-import { catchButtonDivCSS,failPopUpDivCSS } from './PokemonCatchPopUpEmotion'
+import { catchButtonDivCSS, failPopUpDivCSS, successPopUpDivCSS, successNotificationDiv } from './PokemonCatchPopUpEmotion'
 
+//firebase action
 import { pushPokemonToFirebase, isNameDouble } from '../../FirebaseDatabaseSetting/Action';
 
 
@@ -16,6 +17,7 @@ const PokemonCatchPopUp = (props) => {
     const [popupCatchFailed,setPopupCatchFailed] = useState(false)
     const [pokemonName, setPokemonName] = useState("")
     const [status, setStatus] = useState("")
+    const [successNotification,setSuccessNotification] = useState(false)
 
     function tryToCatch() {
         let a = Math.floor(Math.random()*2)
@@ -30,15 +32,19 @@ const PokemonCatchPopUp = (props) => {
 
     function handlePokemonNameChange(event) {
         setPokemonName(event.target.value)
+        if(status!==""){
+            setStatus("")
+        }
     }
 
     function submitForm() {
-        setStatus('')
+        setStatus("")
+        setPopupCatchForm(true)
         if(pokemonName===""){
-            setStatus('please insert your pokemon name')
+            setStatus('Please insert your pokemon name')
         }
         else if(isNameDouble(props.name, pokemonName)){
-            setStatus('there is '+props.name + ' with that name in your own pokemon')
+            setStatus('There is '+props.name + ' with that name in your own pokemon')
         }
         else{
             let data = {
@@ -47,7 +53,23 @@ const PokemonCatchPopUp = (props) => {
                 imageUrl: props.imageUrl
             }
             pushPokemonToFirebase(data)
+            setPokemonName("")
             setPopupCatchForm(false)
+            setSuccessNotification(true)
+        }
+    }
+
+    function handleKeyDown(event) {
+        if(event.key === 'Enter'){
+            if(popupCatchForm){
+                submitForm()
+            }
+            else{
+                setPopupCatchFailed(false)
+                setPopupCatchForm(false)
+                setSuccessNotification(false)
+            }
+            
         }
     }
 
@@ -64,15 +86,20 @@ const PokemonCatchPopUp = (props) => {
                     effect="fadeInUp"
                     onClickAway={()=>{setPopupCatchForm(false)}}
                 >
-                    <div className="pokemon-form">
+                    <div css={successPopUpDivCSS}>
                         <h1 className="text-center">Success</h1>
                         <h3 className="description">Please enter your pokemon name</h3>
-                        <div className="row">
-                            <input type="text" name="pokemon-name" className="pokemon-input" placeholder="pokemon name" value={pokemonName} onChange={handlePokemonNameChange}></input>
-                            <small className="small-text">{status}</small>
-                        </div>
-                        <div className="button-submit-div">
-                            <button className="btn-submit" onClick={submitForm}>Submit</button>
+                        <div className="form">
+                            <div>
+                                <label>Pokemon Name: </label>
+                                <input type="text" value={pokemonName} onChange={handlePokemonNameChange} onKeyDown={handleKeyDown}/>
+                            </div>
+                            <div>
+                                <small>{status}</small>
+                            </div>
+                            <div className="submitDiv">
+                                <button onClick={submitForm}>Submit</button>
+                            </div>
                         </div>
                     </div>
                 </Modal>
@@ -87,8 +114,28 @@ const PokemonCatchPopUp = (props) => {
                         <div className="failed-popup">
                             <h1>Failed</h1>
                             <div >
-                                <p>You failed to catch this pokemon</p>
-                                <p>Please try again</p>
+                                You failed to catch this pokemon
+                            </div>
+                            <div>
+                                Please try again
+                            </div>
+                        </div>
+                    </div>
+                </Modal>
+                <Modal 
+                    visible={successNotification}
+                    width="250"
+                    height="150"
+                    effect="fadeInUp"
+                    onClickAway={()=>{setSuccessNotification(false)}}
+                >
+                    <div css={successNotificationDiv} onClick={()=>{setSuccessNotification(false)}}>
+                        <div className="success-add-pokemon">
+                            <div >
+                                You have success add your pokemon
+                            </div>
+                            <div>
+                                Click anywhere to continue
                             </div>
                         </div>
                     </div>

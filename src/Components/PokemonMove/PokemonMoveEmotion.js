@@ -8,5 +8,5 @@ export const MoveCSS = css`
     margin-right: 3px;
     margin-bottom: 5px;
     cursor: context-menu;
-    background-color: #e6e6dd1f;
+    background-color: #D3E0EA;
 `

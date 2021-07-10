@@ -38,16 +38,19 @@ const PokemonList = () =>{
         let isMounted = true;
         window.scrollTo(0, 0);
         firebaseDB.child('count').on('value',snapshot =>{
-            if(snapshot.val()!=null) {
-                if(isMounted){
+            if(isMounted) {
+                if(snapshot.val()!=null){
                     setPokemonCountList({
                         ...snapshot.val()
                     })
                 }
+                else {
+                    setPokemonCountList({})
+                }
             }
             
         })
-        return () => isMounted = false
+        return () => {isMounted = false}
       }, [])
 
     const { loading, error, data , fetchMore  } = useQuery(GET_POKEMON_LIST, {
