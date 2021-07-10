@@ -6,10 +6,10 @@ import { jsx } from '@emotion/react'
 import { errorText } from './ErrorEmotion'; 
 
 
-const Error = (error) => {
+const Error = (props) => {
     return (
         <div>
-            <h3 css={errorText}>{error.error}</h3>
+            <h3 css={errorText}>{props.error}</h3>
         </div>
     )
 }
