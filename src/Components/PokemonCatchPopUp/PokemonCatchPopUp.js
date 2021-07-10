@@ -9,7 +9,7 @@ import { jsx } from '@emotion/react'
 import { catchButtonDivCSS, failPopUpDivCSS, successPopUpDivCSS, successNotificationDiv } from './PokemonCatchPopUpEmotion'
 
 //firebase action
-import { pushPokemonToFirebase, isNameDouble } from '../../FirebaseDatabaseSetting/Action';
+import { pushPokemonToFirebase } from '../../FirebaseDatabaseSetting/Action';
 
 
 const PokemonCatchPopUp = (props) => {
@@ -35,6 +35,17 @@ const PokemonCatchPopUp = (props) => {
         if(status!==""){
             setStatus("")
         }
+    }
+
+    function isNameDouble(pokemonName,myPokemonName) {
+        let isDouble = false
+        Object.keys(props.myPokemonObject).forEach(id=>{
+            if( (props.myPokemonObject[id].pokemonName === pokemonName) && (props.myPokemonObject[id].myPokemonName === myPokemonName) ) {
+                isDouble = true
+            }
+        })
+        console.log(isDouble)
+        return isDouble;
     }
 
     function submitForm() {

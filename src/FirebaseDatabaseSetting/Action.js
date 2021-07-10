@@ -26,22 +26,6 @@ export function pushPokemonToFirebase(data) {
     
 }
 
-export function isNameDouble (pokemonName,myPokemonName) {
-    let isDouble = false
-    firebaseDB.child('pokemon').once('value',snapshot => {
-        let pokemonObjects = {}
-        if(snapshot.val()){
-            pokemonObjects = snapshot.val()
-        }
-        Object.keys(pokemonObjects).forEach(id => {
-            if( (pokemonObjects[id].pokemonName === pokemonName) && (pokemonObjects[id].myPokemonName === myPokemonName) ) {
-                isDouble = true
-            }
-        })
-    })
-    return isDouble
-}
-
 export function deleteMyPokemon(id,pokemonName) {
     firebaseDB.child('pokemon/'+id).remove()
     let pokemonCount = 0

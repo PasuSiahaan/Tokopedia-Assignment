@@ -28,7 +28,7 @@ export const myPokemonDiv = css`
         cursor: pointer;
         border: none;
         border-radius: 5px;
-        background-color: red;
+        background-color: #D32626;
         color: white;
         padding: 10px;
     }
@@ -46,11 +46,11 @@ export const deleteConfirmPopUp = css`
             cursor: pointer;
         }
         .yes-button {
-            background-color: green;
+            background-color: #519208;
             color: white;
         }
         .no-button {
-            background-color: red;
+            background-color: #D32626;
             color: white;
         }
     }

@@ -7,7 +7,8 @@ import Error from '../../Components/Error/Error';
 import PokemonType from "../../Components/PokemonType/PokemonType";
 import PokemonCatchPopUp from "../../Components/PokemonCatchPopUp/PokemonCatchPopUp";
 import PokemonMove from "../../Components/PokemonMove/PokemonMove";
-
+import firebaseDB from "./../../FirebaseDatabaseSetting/Config"
+import { useEffect, useState } from "react";
 
 //import emotion
 /** @jsxRuntime classic */
@@ -45,6 +46,25 @@ const GET_POKEMON_DETAIL = gql`
 
 const PokemonDetail = () =>{
     let { pokemonName } = useParams();
+    const [myPokemonObject,setMyPokemonObject] = useState({})
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        let isMounted = true
+        firebaseDB.child('pokemon').on('value',snapshot => {
+          if(isMounted){
+            if(snapshot.val()!=null){
+              setMyPokemonObject({
+                ...snapshot.val()
+              })
+            }
+            else{
+              setMyPokemonObject({})
+            }
+          }
+        })
+        return () => {isMounted=false}
+      }, [])
     const { loading, error, data } = useQuery(GET_POKEMON_DETAIL, {
         variables: {"name": pokemonName},
       });
@@ -95,7 +115,7 @@ const PokemonDetail = () =>{
                     ))}
                 </div>
             </div>
-            <PokemonCatchPopUp name={data.pokemon.name} imageUrl={data.pokemon.sprites.front_default}/>
+            <PokemonCatchPopUp name={data.pokemon.name} imageUrl={data.pokemon.sprites.front_default} myPokemonObject={myPokemonObject}/>
         </Fragment>
     )
 }

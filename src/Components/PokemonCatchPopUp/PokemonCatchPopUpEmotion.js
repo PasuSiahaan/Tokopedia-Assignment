@@ -27,7 +27,7 @@ export const failPopUpDivCSS = css`
 `
 export const successPopUpDivCSS = css`
     .text-center {
-        color: seagreen;
+        color: forestgreen;
         text-align: center;
     }
     .description {
@@ -50,11 +50,12 @@ export const successPopUpDivCSS = css`
         text-align:center;
         margin-top:4px;
         button {
-            background-color: darkgreen;
+            background-color: #519208;
             color: white;
             border: none;
             border-radius: 5px;
             padding: 8px 16px;
+            cursor: pointer;
         }
     }
     
