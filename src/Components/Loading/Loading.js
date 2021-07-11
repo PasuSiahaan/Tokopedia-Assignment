@@ -1,10 +1,10 @@
-import logo from '../../Asset/half-circle.gif'
-
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
 
 import { loadingImage } from './LoadingEmotion'
+
+import logo from '../../Assets/half-circle.gif'
 
 const Loading = () => {
     return (

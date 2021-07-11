@@ -13,7 +13,7 @@ import { titleCSS } from '../PokemonListPage/PokemonListEmotion';
 
 const MyPokemonList = () =>{
   const [myPokemonObject,setMyPokemonObject] = useState({})
-  const [isMyPokemonNull,setIsMyPokemonNull] = useState(false)
+  const [isMyPokemonNull,setIsMyPokemonNull] = useState(true)
   useEffect(() => {
     window.scrollTo(0, 0);
     let isMounted = true
